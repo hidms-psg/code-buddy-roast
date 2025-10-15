@@ -1,104 +1,102 @@
-import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Code2, Sparkles } from "lucide-react";
-import gsap from "gsap";
+import { Code2, Terminal, Trophy, Zap } from "lucide-react";
 
 const Landing = () => {
   const navigate = useNavigate();
-  const heroRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    if (heroRef.current && titleRef.current) {
-      gsap.from(titleRef.current, {
-        opacity: 0,
-        y: -50,
-        duration: 1,
-        ease: "power3.out"
-      });
-
-      gsap.from(heroRef.current.children, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-        delay: 0.3
-      });
-    }
-  }, []);
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="max-w-4xl w-full text-center space-y-8" ref={heroRef}>
-        <div className="flex items-center justify-center gap-3 mb-6">
-          <Code2 className="w-12 h-12 text-primary" />
-          <h1 
-            ref={titleRef}
-            className="text-5xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent"
-          >
-            CodeBuddy
+    <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <nav className="border-b border-border">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Code2 className="w-6 h-6 text-primary" />
+            <span className="text-xl font-bold text-foreground">If(Error) Roast();</span>
+          </div>
+          <Button onClick={() => navigate("/login")}>
+            Get Started
+          </Button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="container mx-auto px-6 py-24">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight">
+            Master Coding with
+            <span className="text-primary"> Instant Feedback</span>
           </h1>
-          <Sparkles className="w-8 h-8 text-secondary animate-pulse" />
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Practice coding challenges, run tests instantly, and improve your skills with real-time feedback and motivation
+          </p>
+          <div className="flex gap-4 justify-center pt-4">
+            <Button size="lg" onClick={() => navigate("/login")}>
+              Start Coding
+            </Button>
+            <Button size="lg" variant="outline" onClick={() => navigate("/login")}>
+              View Demo
+            </Button>
+          </div>
         </div>
+      </section>
 
-        <p className="text-xl md:text-2xl text-muted-foreground font-medium">
-          Your friendly coding companion with a side of Tamil cinema roasts 🎬
-        </p>
+      {/* Features */}
+      <section className="container mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="p-8 rounded-lg border border-border bg-card hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Terminal className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Code Editor</h3>
+            <p className="text-muted-foreground">
+              Write Python or Java with a professional code editor supporting syntax highlighting and auto-completion
+            </p>
+          </div>
 
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          "Vaa da! Code pannu, learn pannu, but fail aana roast guaranteed 😎"
-        </p>
+          <div className="p-8 rounded-lg border border-border bg-card hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Zap className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Instant Testing</h3>
+            <p className="text-muted-foreground">
+              Run your code against multiple test cases and get immediate feedback on your solutions
+            </p>
+          </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-          <Button 
-            size="lg"
-            className="text-lg px-8 py-6 shadow-hover hover:scale-105 transition-transform"
-            onClick={() => navigate("/login")}
-          >
-            Get Started 🔥
+          <div className="p-8 rounded-lg border border-border bg-card hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <Trophy className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Track Progress</h3>
+            <p className="text-muted-foreground">
+              Monitor your test attempts, track improvements, and level up your coding skills over time
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="container mx-auto px-6 py-20">
+        <div className="max-w-4xl mx-auto text-center bg-primary/5 rounded-2xl p-12 border border-primary/20">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to start your coding journey?</h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Join developers improving their skills through practice and instant feedback
+          </p>
+          <Button size="lg" onClick={() => navigate("/login")}>
+            Get Started Now
           </Button>
-          <Button 
-            size="lg"
-            variant="outline"
-            className="text-lg px-8 py-6 hover:scale-105 transition-transform"
-            onClick={() => navigate("/login")}
-          >
-            Login with Google
-          </Button>
         </div>
+      </section>
 
-        <div className="pt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-card shadow-card hover:shadow-hover transition-shadow">
-            <div className="text-4xl mb-4">💻</div>
-            <h3 className="font-semibold text-lg mb-2">Code & Compile</h3>
-            <p className="text-sm text-muted-foreground">
-              Write Python or Java, run tests, and get instant feedback
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-card shadow-card hover:shadow-hover transition-shadow">
-            <div className="text-4xl mb-4">😂</div>
-            <h3 className="font-semibold text-lg mb-2">Tamil Roasts</h3>
-            <p className="text-sm text-muted-foreground">
-              Fail a test? Get roasted Tamil cinema style da!
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-card shadow-card hover:shadow-hover transition-shadow">
-            <div className="text-4xl mb-4">🎯</div>
-            <h3 className="font-semibold text-lg mb-2">Track Progress</h3>
-            <p className="text-sm text-muted-foreground">
-              Monitor your tests, attempts, and level up your skills
-            </p>
-          </div>
+      {/* Footer */}
+      <footer className="border-t border-border mt-20">
+        <div className="container mx-auto px-6 py-8">
+          <p className="text-center text-muted-foreground">
+            Made with passion by Kishor
+          </p>
         </div>
-
-        <footer className="pt-12 text-sm text-muted-foreground">
-          Made with 💙 by Kishor
-        </footer>
-      </div>
+      </footer>
     </div>
   );
 };

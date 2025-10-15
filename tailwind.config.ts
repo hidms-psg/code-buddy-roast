@@ -52,13 +52,10 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      backgroundImage: {
-        'gradient-primary': 'var(--gradient-primary)',
-        'gradient-success': 'var(--gradient-success)',
-      },
       boxShadow: {
-        'card': 'var(--shadow-card)',
-        'hover': 'var(--shadow-hover)',
+        'sm': 'var(--shadow-sm)',
+        'md': 'var(--shadow-md)',
+        'lg': 'var(--shadow-lg)',
       },
       borderRadius: {
         lg: "var(--radius)",
